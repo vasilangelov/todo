@@ -3,10 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>todo list</title>
+    <title>todo</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-      
+    <header>
+      <h1>todo</h1>
+
+      <input type="checkbox" id="colorSchemeBtn" />
+    </header>
+    <main>
+      <div class="container task-input-wrapper">
+        <input class="checkbox" type="checkbox" />
+        <input
+          class="task-input"
+          type="text"
+          placeholder="Create a new todo..."
+        />
+      </div>
+
+      <section class="container tasks">
+        <article class="row task">
+          <input class="checkbox" type="checkbox" />
+          <p class="task-description">Refactor CSS file</p>
+          <a class="delete-task" href="javascript:;"></a>
+        </article>
+        <div class="row task-menu">
+          <p>0 items left</p>
+          <ul class="nav-link-wrapper">
+            <li><a class="selected" href="javascript:;">All</a></li>
+            <li><a href="javascript:;">Active</a></li>
+            <li><a href="javascript:;">Completed</a></li>
+          </ul>
+          <a href="javascript:;">Clear Completed</a>
+        </div>
+      </section>
+
+      <p class="text-center">Drag and drop to reorder list</p>
+    </main>
   </body>
 </html>

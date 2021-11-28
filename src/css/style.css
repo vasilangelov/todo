@@ -1,0 +1,270 @@
+@import url('./reset.css');
+@import url('./fonts.css');
+
+:root {
+  --clr-primary-100: #740cf7aa;
+  --clr-primary-200: #740cf7;
+  --clr-primary-400: #0cc8f7;
+  --clr-primary-500: #ed0c7faa;
+  --clr-primary-600: #ed0c7f;
+
+  --clr-normal-100: #fff;
+  --clr-normal-200: #2c293d88;
+  --clr-normal-300: #2c293d;
+  --clr-normal-500: #0d0a24;
+
+  --ff-normal: 'Josefin Sans', sans-serif;
+  --ff-accent: 'Outfit', serif;
+}
+
+body {
+  --header-overlap: clamp(100px, 30vh, 200px);
+
+  margin: 0 30vw;
+
+  font-family: var(--ff-normal);
+}
+
+header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 5vh 0 calc(5vh + var(--header-overlap)) 0;
+}
+
+header::before {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  width: 100vw;
+  /* TODO height is not defined properly */
+  height: calc(10vh + var(--header-overlap));
+
+  background: linear-gradient(
+      135deg,
+      var(--clr-primary-100),
+      var(--clr-primary-500)
+    ),
+    url('../images/bg-light.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+main {
+  position: relative;
+  top: calc(-1 * var(--header-overlap));
+}
+
+h1 {
+  color: var(--clr-normal-100);
+  font-family: var(--ff-accent);
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+}
+
+a {
+  color: var(--clr-normal-300);
+  text-decoration: none;
+
+  transition: all 300ms;
+}
+
+a:hover {
+  color: var(--clr-primary-200);
+}
+
+#colorSchemeBtn {
+  display: inline-block;
+
+  width: 2rem;
+  aspect-ratio: 1 / 1;
+
+  appearance: none;
+  background-image: url(../icons/moon.svg);
+  background-size: cover;
+  cursor: pointer;
+}
+
+#colorSchemeBtn:checked {
+  background-image: url(../icons/sun.svg);
+}
+
+@media (prefers-color-scheme: dark) {
+  #colorSchemeBtn {
+    background-image: url(../icons/sun.svg);
+  }
+
+  #colorSchemeBtn:checked {
+    background-image: url(../icons/moon.svg);
+  }
+}
+
+.container {
+  --padding-x: 1rem;
+
+  margin: 1rem 0;
+  padding: 0 var(--padding-x);
+
+  border-radius: 0.4rem;
+  background-color: var(--clr-normal-100);
+  box-shadow: 0 0 5px var(--clr-normal-200);
+}
+
+.task-input-wrapper {
+  display: flex;
+
+  padding: 1rem;
+
+  align-items: flex-end;
+}
+
+.checkbox {
+  display: inline-block;
+
+  margin-right: 10px;
+  border: 3px solid var(--clr-normal-300);
+  width: 1.5rem;
+  aspect-ratio: 1 / 1;
+
+  appearance: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.checkbox:checked {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+
+  background-image: linear-gradient(
+    135deg,
+    var(--clr-primary-400),
+    var(--clr-primary-600)
+  );
+}
+
+.checkbox:checked::before {
+  content: '';
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url('../icons/check.svg');
+  background-size: cover;
+
+  animation: popup 300ms forwards;
+}
+
+@keyframes popup {
+  0% {
+    transform: scale(0);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(0.6);
+  }
+}
+
+.task-input {
+  --font-size: 1.1rem;
+  flex-grow: 1;
+  font-family: var(--ff-normal);
+  outline: none;
+  border: none;
+  background: none;
+  font-size: var(--font-size);
+  transition: all 200ms;
+  line-height: var(--font-size);
+  vertical-align: text-bottom;
+}
+
+.task-input:focus {
+  font-size: calc(1.05 * var(--font-size));
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-around;
+
+  padding: 1rem 0;
+}
+
+.task {
+  position: relative;
+}
+
+.task::after {
+  content: '';
+
+  position: absolute;
+  left: calc(-1 * var(--padding-x));
+  bottom: 0;
+
+  width: calc(100% + 2 * var(--padding-x));
+  height: 1px;
+
+  background-color: var(--clr-normal-300);
+}
+
+.checkbox:checked + .task-description {
+  text-decoration: line-through;
+}
+
+.task-description {
+  display: inline-block;
+  flex-grow: 1;
+  vertical-align: text-bottom;
+}
+
+.delete-task {
+  width: 1.5rem;
+  aspect-ratio: 1 / 1;
+
+  background-image: url('../icons/cross.svg');
+  background-size: cover;
+  filter: brightness(0);
+}
+
+.task-menu {
+  justify-content: space-between;
+}
+
+.selected {
+  color: var(--clr-primary-200);
+}
+
+.nav-link-wrapper {
+  display: flex;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+.nav-link-wrapper > * {
+  padding: 0 0.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
