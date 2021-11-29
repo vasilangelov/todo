@@ -8,12 +8,12 @@
   </head>
   <body>
     <header>
-      <h1>todo</h1>
+      <h1 id="logo">todo</h1>
 
       <input type="checkbox" id="colorSchemeBtn" />
     </header>
     <main>
-      <div class="container task-input-wrapper">
+      <div class="card task-input-wrapper">
         <input class="checkbox" type="checkbox" />
         <input
           class="task-input"
@@ -22,24 +22,26 @@
         />
       </div>
 
-      <section class="container tasks">
+      <section class="card container">
         <article class="row task">
           <input class="checkbox" type="checkbox" />
           <p class="task-description">Refactor CSS file</p>
           <a class="delete-task" href="javascript:;"></a>
         </article>
-        <div class="row task-menu">
+        <div class="row">
           <p>0 items left</p>
-          <ul class="nav-link-wrapper">
-            <li><a class="selected" href="javascript:;">All</a></li>
-            <li><a href="javascript:;">Active</a></li>
-            <li><a href="javascript:;">Completed</a></li>
-          </ul>
+
           <a href="javascript:;">Clear Completed</a>
         </div>
       </section>
 
-      <p class="text-center">Drag and drop to reorder list</p>
+      <ul class="nav-list-wrapper">
+        <li><a class="selected" href="javascript:;">All</a></li>
+        <li><a href="javascript:;">Active</a></li>
+        <li><a href="javascript:;">Completed</a></li>
+      </ul>
+
+      <p class="disclaimer">Drag and drop to reorder list</p>
     </main>
   </body>
 </html>
