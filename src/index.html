@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>todo</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <script defer src="./js/app.js"></script>
+    <script type="module" src="./js/app.js"></script>
   </head>
   <body>
     <header>
@@ -17,6 +17,7 @@
       <div class="card task-input-wrapper">
         <input class="checkbox" type="checkbox" />
         <input
+          id="taskInput"
           class="task-input"
           type="text"
           placeholder="Create a new todo..."
@@ -24,22 +25,20 @@
       </div>
 
       <section class="card container">
-        <article class="row task">
-          <input class="checkbox" type="checkbox" />
-          <p class="task-description">Refactor CSS file</p>
-          <a class="delete-task" href="javascript:;"></a>
-        </article>
+        <div id="taskContainer"></div>
         <div class="row">
-          <p>0 items left</p>
+          <p id="taskCount"></p>
 
-          <a href="javascript:;">Clear Completed</a>
+          <a id="clearCompletedBtn" href="javascript:;">Clear Completed</a>
         </div>
       </section>
 
-      <ul class="nav-list-wrapper">
-        <li><a class="active" href="javascript:;">All</a></li>
-        <li><a href="javascript:;">Active</a></li>
-        <li><a href="javascript:;">Completed</a></li>
+      <ul id="taskFilters" class="nav-list-wrapper">
+        <li>
+          <a data-display="all" class="active" href="javascript:;">All</a>
+        </li>
+        <li><a data-display="active" href="javascript:;">Active</a></li>
+        <li><a data-display="completed" href="javascript:;">Completed</a></li>
       </ul>
 
       <p class="disclaimer">Drag and drop to reorder list</p>
